@@ -27,7 +27,7 @@ jobs:
 
       - name: Generate Android project scaffolding
         run: |
-          flutter create . --platforms=android --org=com.fitcoach.app --overwrite
+          flutter create . --project-name fit_coach_app --platforms=android --org=com.fitcoach.app --overwrite
 
       - name: Install dependencies
         run: flutter pub get
