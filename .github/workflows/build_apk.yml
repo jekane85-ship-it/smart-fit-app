@@ -25,10 +25,12 @@ jobs:
           channel: 'stable'
           cache: true
 
-      - name: Generate Android project scaffolding
+     - name: Generate Android project scaffolding
         run: |
-          flutter create . --project-name fit_coach_app --platforms=android --org=com.fitcoach.app --overwrite
-
+          cp lib/main.dart lib/main_temp.dart || true
+          flutter create . --project-name fit_coach_app --platforms=android --overwrite
+          cp lib/main_temp.dart lib/main.dart
+          
       - name: Install dependencies
         run: flutter pub get
 
