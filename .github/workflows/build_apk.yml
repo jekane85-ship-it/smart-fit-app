@@ -25,17 +25,18 @@ jobs:
           channel: 'stable'
           cache: true
 
-      - name: Generate Android project scaffolding
+      - name: Recreate clean project structure
         run: |
-          cp lib/main.dart lib/main_temp.dart || true
-          flutter create . --project-name fit_coach_app --platforms=android --overwrite
-          cp lib/main_temp.dart lib/main.dart
+          mkdir -p /tmp/backup
+          cp lib/main.dart /tmp/backup/main.dart
+          flutter create . --project-name smart_fit_app --platforms=android --overwrite
+          cp /tmp/backup/main.dart lib/main.dart
 
-      - name: Install dependencies
-        run: flutter pub get
+      - name: Verify Flutter project
+        run: flutter analyze || true
 
       - name: Build APK
-        run: flutter build apk --release
+        run: flutter build apk --release --no-tree-shake-icons
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
