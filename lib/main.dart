@@ -1,29 +1,4 @@
-color: val == current ? const Color(0xFF00E676) : Colors.white70,
-                            fontWeight: val == current ? FontWeight.bold : FontWeight.normal,
-                          ),
-                        ),
-                      ),
-                      onTap: () {
-                        onSelected(val);
-                        Navigator.pop(ctx);
-                      },
-                    );
-                  },
-                ),
-              ),
-            ],
-          ),
-        );
-      },
-    );
-  }
-}
-
-// Карточка с техникой и визуализацией
-class ExerciseDetailCard extends StatelessWidget {
-  final Exercise exercise;
-
-  const ExerciseDetailCard({super.key, required this.exercise});
+const ExerciseDetailCard({super.key, required this.exercise});
 
   @override
   Widget build(BuildContext context) {
@@ -58,8 +33,6 @@ class ExerciseDetailCard extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 12),
-
-            // Иллюстрация / GIF
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
               child: AspectRatio(
@@ -75,8 +48,6 @@ class ExerciseDetailCard extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 14),
-
-            // Нагрузка
             Row(
               children: [
                 const Icon(Icons.repeat, size: 18, color: Colors.grey),
@@ -98,8 +69,6 @@ class ExerciseDetailCard extends StatelessWidget {
               ],
             ),
             const Divider(color: Colors.white12, height: 24),
-
-            // Ключевой блок: Контрольные точки техники
             const Row(
               children: [
                 Icon(Icons.remove_red_eye_outlined, size: 18, color: Color(0xFF2979FF)),
